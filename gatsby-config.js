@@ -1,75 +1,90 @@
-require(`dotenv`).config()
-
-const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE
-
 module.exports = {
   siteMetadata: {
-    siteTitleAlt: `Jodie - Gatsby Starter Portfolio`,
+    siteTitle: 'Takeshi Inoue',
+    siteTitleAlt: 'Takeshi portfolio',
+    siteHeadline: 'Takeshi portfolio',
+    siteUrl: 'https://t-keshi-web-developer.co.jp',
+    siteDescription: 'web developer. 28yo. I love React.',
+    siteLanguage: 'ja',
+    siteImage: '/src/assets/images/logo.jpg',
+    author: 'Takeshi Inoue',
   },
   plugins: [
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-image',
+    'gatsby-plugin-theme-ui',
     {
-      resolve: `@lekoarts/gatsby-theme-jodie`,
-      // See the theme's README for all available options
+      resolve: 'gatsby-omni-font-loader',
       options: {
-        navigation: [
-          { name: `Projects`, slug: `/projects` },
-          { name: `Art`, slug: `/art` },
-          { name: `About`, slug: `/about` },
-        ],
-      },
-    },
-    {
-      resolve: `gatsby-omni-font-loader`,
-      options: {
-        enableListener: true,
-        preconnect: [`https://fonts.gstatic.com`],
+        enableListener: false,
+        preconnect: ['https://fonts.gstatic.com'],
         interval: 300,
         timeout: 30000,
-        // If you plan on changing the font you'll also need to adjust the Theme UI config to edit the CSS
-        // See: https://github.com/LekoArts/gatsby-themes/tree/master/examples/jodie#changing-your-fonts
         web: [
           {
-            name: `Work Sans`,
-            file: `https://fonts.googleapis.com/css2?family=Work+Sans:wght@400..700&display=swap`,
+            name: 'Work Sans',
+            file: 'https://fonts.googleapis.com/css2?family=Work+Sans:wght@400..700&display=swap',
           },
         ],
       },
     },
-    `gatsby-plugin-sitemap`,
+    'gatsby-plugin-sitemap',
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        name: `jodie - @lekoarts/gatsby-theme-jodie`,
-        short_name: `jodie`,
-        description: `Image-heavy photography portfolio with colorful accents & customizable pages. Includes adaptive image grids powered by CSS grid and automatic image integration into projects.`,
-        start_url: `/`,
-        background_color: `#ffffff`,
-        // This will impact how browsers show your PWA/website
-        // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#b75e09`,
-        display: `standalone`,
+        name: 'our-portfolio/t-keshi',
+        short_name: 'our-portfolio',
+        description: 'web developer. 28yo. I love React',
+        start_url: '/',
+        background_color: '#ffffff',
+        display: 'standalone',
         icons: [
           {
-            src: `/android-chrome-192x192.png`,
-            sizes: `192x192`,
-            type: `image/png`,
+            src: '/android-chrome-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
           },
           {
-            src: `/android-chrome-512x512.png`,
-            sizes: `512x512`,
-            type: `image/png`,
+            src: '/android-chrome-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
           },
         ],
       },
     },
-    `gatsby-plugin-gatsby-cloud`,
-    shouldAnalyseBundle && {
-      resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
+    'gatsby-plugin-gatsby-cloud',
+    {
+      resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
       options: {
-        analyzerMode: `static`,
-        reportFilename: `_bundle.html`,
+        analyzerMode: 'static',
+        reportFilename: '_bundle.html',
         openAnalyzer: false,
       },
     },
-  ].filter(Boolean),
-}
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'content/projects',
+        path: `content/projects`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'content/pages',
+        path: `content/pages`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-mdx',
+      // options: {
+      //   lessBabel: true,
+      // },
+    },
+    'gatsby-transformer-sharp',
+    {
+      resolve: 'gatsby-plugin-sharp',
+      options: {},
+    },
+  ],
+};

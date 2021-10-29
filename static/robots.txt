@@ -1,3 +1,3 @@
 User-agent: *
 
-sitemap: https://jodie.lekoarts.de/sitemap.xml
+sitemap: https://t-keshi-web-developer.co.jp/sitemap.xml
