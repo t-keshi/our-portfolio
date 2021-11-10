@@ -6,7 +6,7 @@ import { theme } from '../components/theme/theme';
 import { ProjectTemplate } from '../components/templates/Project';
 
 export const query = graphql`
-  query ($slug: String!, $formatString: String!, $relativeDirectory: String!) {
+  query ($slug: String, $formatString: String, $relativeDirectory: String) {
     project(slug: { eq: $slug }) {
       body
       excerpt

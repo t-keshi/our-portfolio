@@ -14,8 +14,6 @@ const options = {
     { name: 'Skill', slug: '/skill' },
     { name: 'Projects', slug: '/projects' },
   ],
-  homepagePageLimit: 9999,
-  homepageProjectLimit: 1,
   mdx: true,
   sharp: true,
 };
@@ -91,7 +89,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       body: String!
     }
 
-    type MdxProject implements Project & Node {
+    type MdxProject implements Node & Project {
       title: String!
       shortTitle: String!
       category: String!
@@ -119,7 +117,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       body: String!
     }
 
-    type MdxPage implements Page & Node {
+    type MdxPage implements Node & Page {
       title: String!
       slug: String!
       displayOrder: Int!
@@ -155,7 +153,7 @@ exports.onCreateNode = ({ node, actions, getNode, createNodeId, createContentDig
     const fieldData = {
       title: node.frontmatter.title,
       shortTitle: node.frontmatter.shortTitle,
-      slug: node.frontmatter.slug ? node.frontmatter.slug : undefined,
+      slug: node.frontmatter.slug,
       displayOrder: node.frontmatter.displayOrder,
       category: node.frontmatter.category,
       color: node.frontmatter.color ? node.frontmatter.color : undefined,
@@ -183,8 +181,7 @@ exports.onCreateNode = ({ node, actions, getNode, createNodeId, createContentDig
     createParentChildLink({ parent: node, child: getNode(mdxProjectId) });
   }
 
-  // Check for "pages" and create the "Page" type
-  if (source === 'content/pages') {
+  if (source === options.pagesPath) {
     const fieldData = {
       title: node.frontmatter.title,
       slug: `/${options.basePath}/${node.frontmatter.slug}`.replace(/\/\/+/g, '/'),
@@ -248,15 +245,10 @@ const projectsComponent = require.resolve('./src/pages/Projects.tsx');
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
-  const { homepagePageLimit, homepageProjectLimit } = options;
 
   createPage({
     path: options.basePath,
     component: homepageComponent,
-    context: {
-      homepagePageLimit,
-      homepageProjectLimit,
-    },
   });
 
   createPage({
@@ -302,7 +294,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const projects = result.data.allProject.nodes;
 
   if (projects.length > 0) {
-    projects.map((project) => {
+    projects.forEach((project) => {
       createPage({
         path: project.slug,
         component: projectComponent,
@@ -319,7 +311,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const pages = result.data.allPage.nodes;
 
   if (pages.length > 0) {
-    pages.map((page) => {
+    pages.forEach((page) => {
       createPage({
         path: page.slug,
         component: pageComponent,

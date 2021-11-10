@@ -65,26 +65,25 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'content/projects',
-        path: `content/projects`,
+        path: 'content/projects',
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'content/pages',
-        path: `content/pages`,
+        path: 'content/pages',
       },
     },
     {
       resolve: 'gatsby-plugin-mdx',
-      // options: {
-      //   lessBabel: true,
-      // },
+      options: {
+        lessBabel: true,
+      },
     },
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-sharp',
-      options: {},
     },
   ],
 };

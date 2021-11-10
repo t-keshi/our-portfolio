@@ -5,7 +5,7 @@ import { PageTemplate } from '../components/templates/Page';
 import { theme } from '../components/theme/theme';
 
 export const query = graphql`
-  query ($slug: String!) {
+  query ($slug: String) {
     page(slug: { eq: $slug }) {
       title
       slug

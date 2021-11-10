@@ -6,8 +6,8 @@ import { theme } from '../components/theme/theme';
 import { HomepageTemplate } from '../components/templates/Homepage';
 
 export const query = graphql`
-  query ($homepagePageLimit: Int!, $homepageProjectLimit: Int!) {
-    pages: allPage(sort: { fields: displayOrder, order: ASC }, limit: $homepagePageLimit) {
+  query {
+    pages: allPage(sort: { fields: displayOrder, order: ASC }) {
       nodes {
         slug
         title
@@ -18,7 +18,7 @@ export const query = graphql`
         }
       }
     }
-    projects: allProject(filter: { isProjectTop: { eq: true } }, limit: $homepageProjectLimit) {
+    projects: allProject(filter: { isProjectTop: { eq: true } }) {
       nodes {
         slug
         title: shortTitle
