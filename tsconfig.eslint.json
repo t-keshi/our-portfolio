@@ -18,5 +18,5 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": "src"
   },
-  "include": ["src", "content/pages/about/MyYearsOld.ts"]
+  "include": ["src"]
 }

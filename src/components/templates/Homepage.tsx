@@ -8,7 +8,6 @@ import { GridItem } from '../ui/GridItem';
 import { itemListWrapperStyles, itemStyles } from '../../styles/item-list';
 import { locales } from '../../constants/locales';
 import { visuallyHidden } from '../../styles/utils';
-import { modifyGrid } from '../../utils/modify-grid';
 
 type DataProps = {
   projects: {

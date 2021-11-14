@@ -13,7 +13,7 @@ import { mdxComponents } from '../mdxComponents/mdxComponents';
 
 type LayoutProps = { children: React.ReactNode; color?: string };
 
-export const Layout: React.VFC<LayoutProps> = ({ children, color = `white` }) => {
+export const Layout: React.VFC<LayoutProps> = ({ children, color = 'white' }) => {
   const { theme } = useTheme();
 
   return (
@@ -21,34 +21,38 @@ export const Layout: React.VFC<LayoutProps> = ({ children, color = `white` }) =>
       <Global
         styles={{
           '*,*:after,*:before': {
-            boxSizing: `border-box`,
+            boxSizing: 'border-box',
           },
           html: {
-            fontSize: `18px`,
+            fontSize: '18px',
             WebkitTextSizeAdjust: `100%`,
           },
+          'html, body': {
+            margin: 0,
+            padding: 0,
+          },
           img: {
-            borderStyle: `none`,
+            borderStyle: 'none',
           },
           pre: {
-            fontFamily: `monospace`,
-            fontSize: `1em`,
+            fontFamily: 'monospace',
+            fontSize: '1em',
           },
           '[hidden]': {
-            display: `none`,
+            display: 'none',
           },
           '::selection': {
             background: theme.colors.primary,
             color: theme.colors.white,
           },
           'ul > li > code, ol > li > code, p > code': {
-            color: `#393A34`,
-            background: `#f6f8fa`,
+            color: '#393A34',
+            background: '#f6f8fa',
             padding: 2,
           },
           '@media(max-width: 600px)': {
             html: {
-              fontSize: `16px`,
+              fontSize: '16px',
             },
           },
         }}

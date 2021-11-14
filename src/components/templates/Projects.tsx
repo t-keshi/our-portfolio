@@ -34,13 +34,13 @@ export const ProjectsTemplate: React.FC<PageProps<DataProps>> = ({
     </h1>
     <div
       sx={{
-        display: `grid`,
-        gridTemplateColumns: [`1fr`, `1fr 1fr`],
-        gridAutoRows: `50vw`,
+        display: 'grid',
+        gridTemplateColumns: ['1fr', '1fr 1fr'],
+        gridAutoRows: '50vw',
       }}
     >
       {projects.nodes.length > 0 ? (
-        projects.nodes.slice(1).map((project) => (
+        projects.nodes.map((project) => (
           <GridItem to={project.slug} key={project.slug} data-testid={project.shortTitle}>
             <GatsbyImage
               image={project.cover.childImageSharp.gatsbyImageData}

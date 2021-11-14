@@ -19,5 +19,5 @@
     "baseUrl": "src",
     "jsxImportSource": "theme-ui"
   },
-  "include": ["src", "src/components/MyYearsOld.ts", "content"]
+  "include": ["src", "content"]
 }

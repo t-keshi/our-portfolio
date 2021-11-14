@@ -18,7 +18,7 @@ export const GridItem: React.FC<Props> = ({ children, to, ...props }) => {
     <Link
       to={to}
       sx={{
-        position: `relative`,
+        position: 'relative',
         '> div': {
           position: 'absolute !important' as React.CSSProperties['position'],
           top: 0,
