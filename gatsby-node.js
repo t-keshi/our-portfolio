@@ -12,7 +12,7 @@ const options = {
     { name: 'Career', slug: '/career' },
     { name: 'Hobby', slug: '/hobby' },
     { name: 'Skill', slug: '/skill' },
-    { name: 'Projects', slug: '/projects' },
+    { name: 'Projects', slug: '/project-list' },
   ],
   mdx: true,
   sharp: true,
@@ -34,7 +34,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes, createFieldExtension } = actions;
   const slugify = (source) => {
     const slug = source.slug ? source.slug : kebabCase(source.title);
-    return `/${options.basePath}/${options.projectsPrefix}/${slug}`.replace(/\/\/+/g, '/');
+    return `/${slug}`;
   };
 
   createFieldExtension({
@@ -184,7 +184,7 @@ exports.onCreateNode = ({ node, actions, getNode, createNodeId, createContentDig
   if (source === options.pagesPath) {
     const fieldData = {
       title: node.frontmatter.title,
-      slug: `/${options.basePath}/${node.frontmatter.slug}`.replace(/\/\/+/g, '/'),
+      slug: `/${node.frontmatter.slug}`,
       displayOrder: node.frontmatter.displayOrder,
       color: node.frontmatter.color ? node.frontmatter.color : undefined,
       custom: node.frontmatter.custom,
@@ -252,7 +252,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   });
 
   createPage({
-    path: `/${options.basePath}/${options.projectsUrl}`.replace(/\/\/+/g, '/'),
+    path: '/project-list',
     component: projectsComponent,
   });
 

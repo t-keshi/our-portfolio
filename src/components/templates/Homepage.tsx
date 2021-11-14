@@ -72,7 +72,7 @@ export const HomepageTemplate: React.FC<PageProps<DataProps>> = ({ data: { pages
           {projectItems.length > 0 ? (
             projectItems.map((item) => (
               <GridItem
-                to="/projects"
+                to="/project-list"
                 className="item"
                 key={item.title}
                 sx={itemStyles}
