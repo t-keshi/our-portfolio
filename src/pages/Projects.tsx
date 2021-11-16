@@ -7,10 +7,7 @@ import { ProjectsTemplate } from '../components/templates/Projects';
 
 export const query = graphql`
   query {
-    projects: allProject(
-      filter: { isProjectTop: { eq: false } }
-      sort: { fields: displayOrder, order: ASC }
-    ) {
+    projects: allProject(sort: { fields: displayOrder, order: ASC }) {
       nodes {
         shortTitle
         slug

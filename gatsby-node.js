@@ -85,7 +85,6 @@ exports.createSchemaCustomization = ({ actions }) => {
       cover: File! @fileByRelativePath
       excerpt(pruneLength: Int = 160): String!
       defer: Boolean @defaultFalse
-      isProjectTop: Boolean @defaultFalse
       body: String!
     }
 
@@ -100,7 +99,6 @@ exports.createSchemaCustomization = ({ actions }) => {
       cover: File! @fileByRelativePath
       excerpt(pruneLength: Int = 140): String! @mdxpassthrough(fieldName: "excerpt")
       defer: Boolean @defaultFalse
-      isProjectTop: Boolean @defaultFalse
       body: String! @mdxpassthrough(fieldName: "body")
     }
 
@@ -160,7 +158,6 @@ exports.onCreateNode = ({ node, actions, getNode, createNodeId, createContentDig
       cover: node.frontmatter.cover,
       date: node.frontmatter.date,
       defer: node.frontmatter.defer,
-      isProjectTop: node.frontmatter.isProjectTop,
     };
 
     const mdxProjectId = createNodeId(`${node.id} >>> MdxProject`);

@@ -18,34 +18,10 @@ export const query = graphql`
         }
       }
     }
-    projects: allProject(filter: { isProjectTop: { eq: true } }) {
-      nodes {
-        slug
-        title: shortTitle
-        cover {
-          childImageSharp {
-            gatsbyImageData(width: 1200, quality: 90)
-          }
-        }
-      }
-    }
   }
 `;
 
 type DataProps = {
-  projects: {
-    nodes: {
-      slug: string;
-      title: string;
-      isProjectTop: true;
-      cover: {
-        childImageSharp: {
-          gatsbyImageData: IGatsbyImageData;
-        };
-      };
-      __typename: 'MdxProject';
-    }[];
-  };
   pages: {
     nodes: {
       slug: string;
