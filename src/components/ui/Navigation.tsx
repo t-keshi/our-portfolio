@@ -40,7 +40,12 @@ export const Navigation: React.VFC<Props> = ({ bg }) => {
       <ul>
         {navigation.map((navItem) => (
           <li key={navItem.slug}>
-            <Link to={replaceSlashes(`/${basePath}/${navItem.slug}`)}>{navItem.name}</Link>
+            <Link
+              activeStyle={{ textDecoration: 'underline' }}
+              to={replaceSlashes(`/${basePath}/${navItem.slug}`)}
+            >
+              {navItem.name}
+            </Link>
           </li>
         ))}
       </ul>

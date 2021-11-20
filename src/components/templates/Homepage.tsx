@@ -61,7 +61,7 @@ export const HomepageTemplate: React.FC<PageProps<DataProps>> = ({ data: { pages
               alt="projects"
               width={1200}
             />
-            <span>projects</span>
+            <span>Projects</span>
           </GridItem>
         </div>
       </div>

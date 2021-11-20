@@ -11,7 +11,6 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-image',
     'gatsby-plugin-theme-ui',
     {
       resolve: 'gatsby-omni-font-loader',
@@ -61,29 +60,45 @@ module.exports = {
         openAnalyzer: false,
       },
     },
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    `gatsby-remark-images`,
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'content/projects',
-        path: 'content/projects',
+        path: `content/projects`,
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'content/pages',
-        path: 'content/pages',
+        path: `content/pages`,
       },
     },
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
         lessBabel: true,
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200,
+            },
+          },
+        ],
       },
     },
-    'gatsby-transformer-sharp',
     {
-      resolve: 'gatsby-plugin-sharp',
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /assets/,
+        },
+      },
     },
   ],
 };
