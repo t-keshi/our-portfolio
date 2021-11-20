@@ -24,11 +24,12 @@ export const SkillSet: React.VFC = () => (
       <StaticImage loading="lazy" src="../../assets/go.svg" alt="Go" objectFit="contain" />
     </Grid>
     <Heading variant="h4" mb={2}>
-      フレームワーク
+      フレームワーク/ライブラリ
     </Heading>
     <Grid gap={4} mb={4} columns={[12, null, 4]}>
       <StaticImage loading="lazy" src="../../assets/react.svg" alt="React" objectFit="contain" />
       <StaticImage loading="lazy" src="../../assets/redux.svg" alt="Redux" objectFit="contain" />
+      <StaticImage loading="lazy" src="../../assets/apollo.svg" alt="Apollo" objectFit="contain" />
     </Grid>
     <Heading variant="h4" mb={2}>
       クラウド

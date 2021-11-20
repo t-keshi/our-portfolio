@@ -69,7 +69,7 @@ export const ProjectTemplate: React.FC<PageProps<DataProps>> = ({
     </div>
     <div sx={{ backgroundColor: transparentize(0.9, project.color) }}>
       <div sx={{ variant: `content.imageList` }}>
-        {images.nodes.map((image) => (
+        {images.nodes.slice(1).map((image) => (
           <GatsbyImage
             key={image.name}
             alt={image.name}
